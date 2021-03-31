@@ -5,6 +5,7 @@ const mongoose = require('mongoose');
 const dbConfig = require('./config/db.config');
 
 const prokerRoute = require('./Routes/proker.route');
+const pembinaRoute = require('./Routes/pembina.route');
 
 mongoose.Promise = global.Promise;
 mongoose.connect(dbConfig.url, {
@@ -27,6 +28,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cors(corsOption))
 
 app.use('/prokers', prokerRoute)
+app.use('/pembina', pembinaRoute)
 
 
 
