@@ -1,83 +1,41 @@
-const mongoose = require("mongoose");
 const express = require("express");
 const router = express.Router();
 
-let prokerSchema = require("../Models/Proker");
+let proker = require("../controllers/Proker");
 
 /**
  * create data
  */
-router.route("/tambah-proker").post((req, res, next) => {
-  prokerSchema.create(req.body, (error, data) => {
-    if (error) {
-      return next(error);
-    } else {
-      console.log(data);
-      res.json(data);
-    }
-  });
+router.route("/add").post((req, res, next) => {
+  proker.create(req, res)
 });
 
 /**
  * getAll
  */
 router.route("/").get((req, res, next) => {
-  prokerSchema.find((error, data) => {
-    if (error) {
-      return next(error);
-    } else {
-      res.json(data);
-    }
-  });
+  proker.get(req, res)
 });
 
 /**
  * getById
  */
-router.route("/edit-proker/:id").get((req, res, next) => {
-  prokerSchema.findById(req.params.id, (error, data) => {
-    if (error) {
-      return next(error);
-    } else {
-      res.json(data);
-    }
-  });
+router.route("/:id").get((req, res, next) => {
+  proker.getById(req, res);
 });
 
 /**
  * update data
  */
-router.route("/update-proker/:id").put((req, res, next) => {
-  prokerSchema.findByIdAndUpdate(
-    req.params.id,
-    {
-      $set: req.body,
-    },
-    (error, data) => {
-      if (error) {
-        return next(error);
-        console.log(error);
-      } else {
-        console.log(data);
-        res.json(data);
-      }
-    }
-  );
+router.route("/update/:id").put((req, res, next) => {
+  proker.update(req, res);
 });
 
 /**
  * delete data
  */
-router.route("/delete-proker/:id").delete((req, res, next) => {
-  prokerSchema.findByIdAndRemove(req.params.id, (error, data) => {
-    if (error) {
-      return next(error);
-    } else {
-      res.status(200).json({
-        msg: data,
-      });
-    }
-  });
+router.route("/delete/:id").delete((req, res, next) => {
+  proker.delete(req, res)
 });
 
 module.exports = router;

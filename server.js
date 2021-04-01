@@ -27,7 +27,7 @@ mongoose
 
 const app = express();
 var corsOption = {
-  origin: "http://localhost:3000",
+  origin: "http://localhost:3000/",
 };
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -45,11 +45,11 @@ app.use((req, res, next) => {
   next();
 });
 
-app.use(getToken.verifyAuthToken);
+app.use("/auth", authRoute);
+//app.use(getToken.verifyAuthToken);
 app.use("/prokers", prokerRoute);
 app.use("/pembina", pembinaRoute);
 app.use("/mahasiswa", mahasiswaRoute);
-app.use("/auth", authRoute);
 
 app.get("/", (req, res) => {
   res.json({ message: "welcome" });
