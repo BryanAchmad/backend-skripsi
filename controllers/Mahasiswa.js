@@ -1,9 +1,10 @@
 const bcrypt = require("bcryptjs");
 const JSONResponse = require("../libs/JSONResponse");
+const jwtAuthToken = require("../controllers/AuthToken");
 let mahasiswaSchema = require("../Models/Mahasiswa");
 
 module.exports = {
-  get(req, res) {
+  get(req, res, next) {
     try {
       mahasiswaSchema.find((error, data) => {
         if (error) {
