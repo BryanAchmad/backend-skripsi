@@ -3,7 +3,6 @@ const express = require("express");
 const router = express.Router();
 const JSONResponse = require("../libs/JSONResponse");
 const jwtAuthToken = require("../middleware/AuthToken");
-let authController = require("../controllers/Auth");
 
 /**
  * login
