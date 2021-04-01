@@ -6,7 +6,7 @@ const mahasiswaSchema = require("../Models/Mahasiswa");
 const JSONResponse = require("../libs/JSONResponse");
 
 module.exports = {
-  signin(req, res) {
+  signin(req, res, next) {
     try {
       mahasiswaSchema.findOne({ nim: req.body.nim }).then((data) => {
         // console.log(data.id);
@@ -17,6 +17,7 @@ module.exports = {
         if (!verify) {
           JSONResponse.serverError(req, res, "password incorect!", null);
         }
+
         var token =
           "Bearer " +
           jwt.sign({ id: data.id }, config.secret, {
@@ -27,7 +28,8 @@ module.exports = {
           code: 200,
           auth: true,
           id: req.body.id,
-          message: "success",
+          status: "success",
+          message: "login Success !",
           token: token,
         });
       });

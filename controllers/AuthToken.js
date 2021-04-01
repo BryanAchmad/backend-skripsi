@@ -4,8 +4,7 @@ const JSONResponse = require("../libs/JSONResponse");
 
 module.exports = {
   verifyAuthToken(req, res, next) {
-    let tokenHeader = req.headers["x-access-token"];
-
+    let tokenHeader = req.headers.authorization;
     if (tokenHeader.split(" ")[0] !== "Bearer") {
       JSONResponse.serverError(req, res, "Incorrect token format", null);
     }
@@ -21,6 +20,8 @@ module.exports = {
         if (error) {
           JSONResponse.serverError(req, res, null, null);
         }
+        JSONResponse.success(req, res, null, null);
+        console.log("masuk");
         next();
       });
     } catch (error) {
