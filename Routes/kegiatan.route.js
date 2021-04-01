@@ -1,48 +1,40 @@
 const express = require("express");
 const router = express.Router();
-
-let proker = require("../controllers/Proker");
-
-/**
- * create data
- */
-router.route("/add").post(async (req, res, next) => {
-  proker.create(req, res);
-});
+let kegiatan = require("../controllers/CatatanKegiatan");
 
 /**
  * getAll
  */
 router.route("/").get((req, res, next) => {
-  proker.get(req, res);
+  kegiatan.get(req, res, next);
 });
 
 /**
- * getAll
+ * create data
  */
-router.route("/get").get((req, res, next) => {
-  proker.get(req, res);
+router.route("/add").post((req, res, next) => {
+  kegiatan.create(req, res, next);
 });
 
 /**
  * getById
  */
 router.route("/:id").get((req, res, next) => {
-  proker.getById(req, res);
+  kegiatan.getById(req, res, next);
 });
 
 /**
- * update data
+ * updateData
  */
 router.route("/update/:id").put((req, res, next) => {
-  proker.update(req, res);
+  kegiatan.update(req, res, next);
 });
 
 /**
- * delete data
+ * delete Data
  */
 router.route("/delete/:id").delete((req, res, next) => {
-  proker.delete(req, res);
+  kegiatan.delete(req, res, next);
 });
 
 module.exports = router;

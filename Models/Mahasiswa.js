@@ -5,6 +5,7 @@ let mahasiswaSchema = new Schema(
   {
     nim: {
       type: String,
+      unique: true,
       required: true,
     },
     pic: {
