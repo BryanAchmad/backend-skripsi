@@ -19,13 +19,25 @@ module.exports = {
   },
   create(req, res) {
     try {
-      mahasiswaSchema.create(req.body, (error, data) => {
-        if (error) {
-          JSONResponse.serverError(req, res, null, data);
-        } else {
-          JSONResponse.success(req, res, null, data);
+      mahasiswaSchema.create(
+        {
+          nim: req.body.nim,
+          pic: bcrypt.hashSync(req.body.pic, 8),
+          nama: req.body.nama,
+          jenis_kelamin: req.body.jenis_kelamin,
+          no_telp: req.body.no_telp,
+          alamat: req.body.alamat,
+          jurusan: req.body.jurusan,
+          fakultas: req.body.fakultas,
+        },
+        (error, data) => {
+          if (error) {
+            JSONResponse.serverError(req, res, null, data);
+          } else {
+            JSONResponse.success(req, res, null, data);
+          }
         }
-      });
+      );
     } catch (error) {
       console.log(error.message, error.stack);
       JSONResponse.serverError(req, res, null, null);
