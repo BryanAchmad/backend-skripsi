@@ -2,7 +2,7 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const cors = require("cors");
 const mongoose = require("mongoose");
-const dbConfig = require("./config/db.config");
+const config = require("./config/configRoles");
 
 const prokerRoute = require("./Routes/proker.route");
 const pembinaRoute = require("./Routes/pembina.route");
@@ -11,7 +11,7 @@ const authRoute = require("./Routes/auth.route");
 
 mongoose.Promise = global.Promise;
 mongoose
-  .connect(dbConfig.url, {
+  .connect(config.url, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
   })
