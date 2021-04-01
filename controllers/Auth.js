@@ -14,6 +14,7 @@ module.exports = {
           JSONResponse.serverError(req, res, "user not found", null);
         }
         var verify = bcrypt.compareSync(req.body.pic, data.pic);
+        console.log(verify)
         if (!verify) {
           JSONResponse.serverError(req, res, "password incorect!", null);
         }

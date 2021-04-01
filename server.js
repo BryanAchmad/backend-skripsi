@@ -8,6 +8,7 @@ const prokerRoute = require("./Routes/proker.route");
 const pembinaRoute = require("./Routes/pembina.route");
 const mahasiswaRoute = require("./Routes/mahasiswa.route");
 const authRoute = require("./Routes/auth.route");
+const kegiatanRoute = require("./Routes/kegiatan.route");
 const getToken = require("./middleware/AuthToken");
 
 mongoose.Promise = global.Promise;
@@ -27,7 +28,7 @@ mongoose
 
 const app = express();
 var corsOption = {
-  origin: "http://localhost:3000",
+  origin: "http://localhost:3000/",
 };
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -45,11 +46,12 @@ app.use((req, res, next) => {
   next();
 });
 
-app.use(getToken.verifyAuthToken);
+app.use("/auth", authRoute);
+//app.use(getToken.verifyAuthToken);
 app.use("/prokers", prokerRoute);
 app.use("/pembina", pembinaRoute);
 app.use("/mahasiswa", mahasiswaRoute);
-app.use("/auth", authRoute);
+app.use("/kegiatan", kegiatanRoute);
 
 app.get("/", (req, res) => {
   res.json({ message: "welcome" });

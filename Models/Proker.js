@@ -1,18 +1,36 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
-let prokerSchema = new Schema({
+let prokerSchema = new Schema(
+  {
     judul: {
-        type: String
+      type: String,
     },
     divisi: {
-        type: String
+      type: String,
     },
     deskripsi: {
-        type: String
-    }
-}, {
-    collection: 'prokers'
-})
+      type: String,
+    },
+    id_catatan_kegiatan: [
+      {
+        type: mongoose.Types.ObjectId,
+        ref: "CatatanKegiatan",
+      },
+    ],
+  },
+  {
+    collection: "prokers",
+  }
+);
 
-module.exports = mongoose.model('Proker', prokerSchema)
+prokerSchema.virtual("catatan_kegiatan", {
+  ref: "CatatanKegiatan",
+  localField: "_id",
+  foreignField: "proker",
+});
+
+prokerSchema.set("toObject", { virtuals: true });
+prokerSchema.set("toJSON", { virtuals: true });
+
+module.exports = mongoose.model("Proker", prokerSchema);
