@@ -5,10 +5,6 @@ const JSONResponse = require("../libs/JSONResponse");
 module.exports = {
   verifyAuthToken(req, res, next) {
     let tokenHeader = req.headers.authorization;
-
-    if (tokenHeader == undefined) {
-      JSONResponse.success(req, res, "Unauthorized!", null);
-    }
     if (tokenHeader.split(" ")[0] !== "Bearer") {
       JSONResponse.serverError(req, res, "Incorrect token format", null);
     }
@@ -24,7 +20,8 @@ module.exports = {
         if (error) {
           JSONResponse.serverError(req, res, "Token incorrect!", null);
         }
-        res.setHeader("X-New-Policy", "Success");
+        JSONResponse.success(req, res, null, null);
+        console.log("masuk");
         next();
       });
     } catch (error) {

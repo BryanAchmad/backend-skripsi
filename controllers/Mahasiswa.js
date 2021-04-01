@@ -1,5 +1,6 @@
 const bcrypt = require("bcryptjs");
 const JSONResponse = require("../libs/JSONResponse");
+const jwtAuthToken = require("../controllers/AuthToken");
 let mahasiswaSchema = require("../Models/Mahasiswa");
 
 module.exports = {
