@@ -8,7 +8,7 @@ let authController = require("../controllers/Auth");
 /**
  * login
  */
-router.route("/signin").post((req, res, next) => {
+router.route("/").post((req, res, next) => {
   try {
     authController.signin(req, res);
   } catch (error) {
@@ -16,3 +16,5 @@ router.route("/signin").post((req, res, next) => {
     JSONResponse.serverError(req, res, null, null);
   }
 });
+
+module.exports = router;
