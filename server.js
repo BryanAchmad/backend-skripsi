@@ -7,6 +7,7 @@ const dbConfig = require("./config/db.config");
 const prokerRoute = require("./Routes/proker.route");
 const pembinaRoute = require("./Routes/pembina.route");
 const mahasiswaRoute = require("./Routes/mahasiswa.route");
+const authRoute = require("./Routes/auth.route");
 
 mongoose.Promise = global.Promise;
 mongoose
@@ -34,6 +35,7 @@ app.use(cors(corsOption));
 app.use("/prokers", prokerRoute);
 app.use("/pembina", pembinaRoute);
 app.use("/mahasiswa", mahasiswaRoute);
+app.use("/auth", authRoute);
 
 app.get("/", (req, res) => {
   res.json({ message: "welcome" });
