@@ -1,0 +1,344 @@
+{
+	"info": {
+		"_postman_id": "ad9c42da-7c57-489c-9354-65daf243ab8d",
+		"name": "sukeceng",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "prokers",
+			"item": [
+				{
+					"name": "tambahdata-prokers",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"judul\" : \"tes\",\r\n    \"divisi\" : \"a\",\r\n    \"deskripsi\" : \"b\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/prokers/tambah-proker",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"prokers",
+								"tambah-proker"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getdata-prokers",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/prokers/",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"prokers",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "pembina",
+			"item": [
+				{
+					"name": "adddata",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nama\":\"qhodir\",\r\n    \"jenis_kelamin\":\"laki-laki\",\r\n    \"no_telp\":\"1212121\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/pembina/add",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"pembina",
+								"add"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getpembina",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/pembina/",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"pembina",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getbyid",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\":\"606492817d88644574f9b8c3\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/pembina/606492817d88644574f9b8c3",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"pembina",
+								"606492817d88644574f9b8c3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "editdata",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nama\": \"fisx\",\r\n    \"jenis_kelamin\": \"laki-laki\",\r\n    \"no_telp\": \"1121\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/pembina/update/606492817d88644574f9b8c3",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"pembina",
+								"update",
+								"606492817d88644574f9b8c3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/pembina/delete/606492817d88644574f9b8c3",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"pembina",
+								"delete",
+								"606492817d88644574f9b8c3"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "mahasiswa",
+			"item": [
+				{
+					"name": "adddata",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nim\":\"201610370311045\",\r\n    \"pic\":\"laki-laki\",\r\n    \"nama\":\"qhodir\",\r\n    \"jenis_kelamin\":\"laki-laki\",\r\n    \"no_telp\":\"1212121\",\r\n    \"alamat\":\"tirto\",\r\n    \"jurusan\":\"IF\",\r\n    \"fakultas\":\"Teknik\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/mahasiswa/add",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"mahasiswa",
+								"add"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getData",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/mahasiswa/",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"mahasiswa",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getbyid",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\":\"606492817d88644574f9b8c3\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/mahasiswa/6064afd7672aad51d8d0dcca",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"mahasiswa",
+								"6064afd7672aad51d8d0dcca"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "editdata",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nim\":\"201610370311045\",\r\n    \"pic\":\"laki-laki\",\r\n    \"nama\":\"qhodirs\",\r\n    \"jenis_kelamin\":\"laki-laki\",\r\n    \"no_telp\":\"1212121\",\r\n    \"alamat\":\"tirto\",\r\n    \"jurusan\":\"IF\",\r\n    \"fakultas\":\"Teknik\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/mahasiswa/update/6064afd7672aad51d8d0dcca",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"mahasiswa",
+								"update",
+								"6064afd7672aad51d8d0dcca"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/mahasiswa/delete/6064afd7672aad51d8d0dcca",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"mahasiswa",
+								"delete",
+								"6064afd7672aad51d8d0dcca"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "auth",
+			"item": [
+				{
+					"name": "login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nim\": \"201610370311045\",\r\n    \"pic\": \"123233\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/auth",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"auth"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
