@@ -9,7 +9,7 @@ var success = function (req, res, message, data) {
 
 var serverError = function (req, res, message, data) {
   res.status(400).json({
-    code: 400,
+    code: 401,
     status: "error",
     message: message || "internal server error",
     data: data,

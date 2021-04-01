@@ -8,6 +8,7 @@ const prokerRoute = require("./Routes/proker.route");
 const pembinaRoute = require("./Routes/pembina.route");
 const mahasiswaRoute = require("./Routes/mahasiswa.route");
 const authRoute = require("./Routes/auth.route");
+const getToken = require("./middleware/AuthToken");
 
 mongoose.Promise = global.Promise;
 mongoose
@@ -44,6 +45,7 @@ app.use((req, res, next) => {
   next();
 });
 
+app.use(getToken.verifyAuthToken);
 app.use("/prokers", prokerRoute);
 app.use("/pembina", pembinaRoute);
 app.use("/mahasiswa", mahasiswaRoute);
