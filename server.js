@@ -9,13 +9,20 @@ const pembinaRoute = require("./Routes/pembina.route");
 const mahasiswaRoute = require("./Routes/mahasiswa.route");
 const authRoute = require("./Routes/auth.route");
 const kegiatanRoute = require("./Routes/kegiatan.route");
+const userRoute = require("./Routes/activeUser.route");
 const getToken = require("./middleware/AuthToken");
 
 mongoose.Promise = global.Promise;
+// mongoose.set("useNewUrlParser", true);
+// mongoose.set("useFindAndModify", false);
+// mongoose.set("useCreateIndex", true);
+// mongoose.set("useUnifiedTopology", true);
 mongoose
   .connect(config.url, {
     useNewUrlParser: true,
+    useFindAndModify: false,
     useUnifiedTopology: true,
+    useCreateIndex: true,
   })
   .then(
     () => {
@@ -52,6 +59,7 @@ app.use("/prokers", prokerRoute);
 app.use("/pembina", pembinaRoute);
 app.use("/mahasiswa", mahasiswaRoute);
 app.use("/kegiatan", kegiatanRoute);
+app.use("/register", userRoute);
 
 app.get("/", (req, res) => {
   res.json({ message: "welcome" });

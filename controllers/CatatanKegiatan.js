@@ -3,17 +3,16 @@ let prokerSchema = require("../Models/Proker");
 let kegiatanSchema = require("../Models/CatatanKegiatan");
 
 module.exports = {
-  create(req, res, next) {
+  async create(req, res, next) {
     try {
       kegiatanSchema.create(req.body, (error, data) => {
         if (error) {
           JSONResponse.serverError(req, res, null, data);
         } else {
-          // console.log(data);
-          prokerSchema.findOneAndUpdate(
-            data.proker_have,
+          prokerSchema.findByIdAndUpdate(
+            { _id: data.proker_have },
             {
-              $push: { id_catatan_kegiatan: data },
+              $push: { catatan_kegiatan: data },
             },
             (error, dataproker) => {
               if (error) {
@@ -23,6 +22,33 @@ module.exports = {
               }
             }
           );
+        }
+      });
+    } catch (error) {
+      JSONResponse.serverError(req, res, error.message, null);
+    }
+  },
+  getById(req, res) {
+    try {
+      kegiatanSchema.findById(req.params.id, (error, data) => {
+        if (error) {
+          JSONResponse.serverError(req, res, null, data);
+        } else {
+          JSONResponse.success(req, res, null, data);
+        }
+      });
+    } catch (error) {
+      console.log(error.message, error.stack);
+      JSONResponse.serverError(req, res, null, null);
+    }
+  },
+  get(req, res, next) {
+    try {
+      kegiatanSchema.find((error, data) => {
+        if (error) {
+          JSONResponse.serverError(req, res, null, data);
+        } else {
+          JSONResponse.success(req, res, null, data);
         }
       });
     } catch (error) {
