@@ -21,7 +21,7 @@ router.route("/").get((req, res, next) => {
  * getAll
  */
 router.route("/get").get((req, res, next) => {
-  proker.get(req, res);
+  proker.getAll(req, res);
 });
 
 /**

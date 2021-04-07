@@ -3,24 +3,15 @@ let prokerSchema = require("../Models/Proker");
 
 module.exports = {
   getAll(req, res) {
-    try {
-      prokerSchema.find().populate(
-        {
-          path: "id_catatan_kegiatan",
-          select: "judul tanggal deskripsi foto",
-        },
-        (req, data) => {
-          if (error) {
-            JSONResponse.serverError(req, res, null, data);
-          } else {
-            JSONResponse.success(req, res, null, data);
-          }
-        }
-      );
-    } catch (error) {
-      console.log(error.message, error.stack);
-      JSONResponse.serverError(req, res, null, null);
-    }
+    prokerSchema
+      .find()
+      .populate("catatan_kegiatan")
+      .then((data) => {
+        JSONResponse.success(req, res, null, data);
+      })
+      .catch((err) => {
+        JSONResponse.serverError(req, res, err.message, null);
+      });
   },
   get(req, res) {
     try {
@@ -32,36 +23,33 @@ module.exports = {
         }
       });
     } catch (error) {
-      console.log(error.message, error.stack);
-      JSONResponse.serverError(req, res, null, null);
+      JSONResponse.serverError(req, res, error.messag, null);
     }
   },
   create(req, res) {
     try {
       prokerSchema.create(req.body, (error, data) => {
         if (error) {
-          JSONResponse.serverError(req, res, null, data);
+          JSONResponse.serverError(req, res, error.messag, data);
         } else {
           JSONResponse.success(req, res, null, data);
         }
       });
     } catch (error) {
-      console.log(error.message, error.stack);
-      JSONResponse.serverError(req, res, null, null);
+      JSONResponse.serverError(req, res, error.messag, null);
     }
   },
   getById(req, res) {
     try {
       prokerSchema.findById(req.params.id, (error, data) => {
         if (error) {
-          JSONResponse.serverError(req, res, null, data);
+          JSONResponse.serverError(req, res, error.messag, data);
         } else {
           JSONResponse.success(req, res, null, data);
         }
       });
     } catch (error) {
-      console.log(error.message, error.stack);
-      JSONResponse.serverError(req, res, null, null);
+      JSONResponse.serverError(req, res, error.messag, null);
     }
   },
   update(req, res) {
@@ -71,11 +59,11 @@ module.exports = {
         { $set: req.body },
         (error, data) => {
           if (error) {
-            JSONResponse.serverError(req, res, null, data);
+            JSONResponse.serverError(req, res, error.messag, data);
           } else {
             prokerSchema.findById(req.params.id, (error, data) => {
               if (error) {
-                JSONResponse.serverError(req, res, null, data);
+                JSONResponse.serverError(req, res, error.messag, data);
               } else {
                 JSONResponse.success(req, res, null, data);
               }
@@ -84,8 +72,7 @@ module.exports = {
         }
       );
     } catch (error) {
-      console.log(error.message, error.stack);
-      JSONResponse.serverError(req, res, null, null);
+      JSONResponse.serverError(req, res, error.messag, null);
     }
   },
   delete(req, res) {
@@ -98,7 +85,6 @@ module.exports = {
         }
       });
     } catch (error) {
-      console.log(error.message, error.stack);
       JSONResponse.serverError(req, res, null, null);
     }
   },
